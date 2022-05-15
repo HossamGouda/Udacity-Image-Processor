@@ -18,27 +18,30 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-/* eslint-disable no-console */
-var express_1 = __importDefault(require("express"));
-var dotenv = __importStar(require("dotenv"));
-var index_1 = __importDefault(require("./routes/index"));
-dotenv.config();
-var PORT = process.env.PORT || 5000;
-// create an instance server
-var app = (0, express_1.default)();
-// HTTP request logger middleware
-// app.use(morgan('short'))
-// add routing for / path
-// app.get('/', (req: Request, res: Response) => {
-//   res.send('Home')
-// })
-app.use('/api', index_1.default);
-// start express server
-app.listen(PORT, function () {
-    console.log("Server is starting at prot:".concat(PORT));
-});
-exports.default = app;
+var fs = __importStar(require("fs"));
+var makeDir = function (target) {
+    return fs.mkdirSync(target);
+};
+var imaExtension = function (imageName) {
+    return imageName.includes('.jpg' || '.jpeg' || '.png' || '.gif');
+};
+var exsist = function (file) {
+    return fs.existsSync(file);
+};
+module.exports = {
+    makeDir: makeDir,
+    imaExtension: imaExtension,
+    exsist: exsist,
+};
+// import { existsSync, mkdirSync } from "fs";
+// const checkType = (fileName: string): boolean => {
+//   return fileName.includes(".jpg" || ".jpeg" || ".png" || ".gif"); // check if the file doesn't include an extension
+// };
+// const fileExists = (imageLocation: string): boolean => {
+//   return existsSync(imageLocation); // return whether or not the file exists synchronously
+// };
+// const createDir = (dirLocation: string) : void => {
+//   return mkdirSync(dirLocation);
+// }
+// export { checkType, fileExists, createDir };
