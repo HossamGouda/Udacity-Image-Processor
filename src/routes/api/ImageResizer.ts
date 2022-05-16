@@ -1,28 +1,25 @@
-import express from "express";
+import express from 'express'
 // eslint-disable-next-line prettier/prettier
-import resize from "../../sharp"
+import resize from '../../sharp'
 import path from 'path'
 import * as handlers from '../../pathTarget'
-
-
 
 const imageResizer = express.Router()
 
 imageResizer.get('/', async (req: express.Request, res: express.Response) => {
-  const name = req.query;
-  const width = req.query;
-  const height = req.query;
-  const fileLocation = path.resolve('./') + '/assets/'
+  const name = req.query
+  const width = req.query
+  const height = req.query
+  const fileLocation = path.resolve('./assets')
   const fileTarget = fileLocation + 'thumb/'
   const targetImage = `${fileLocation}${name}.jpg`
 
-  console.log(name, width, height, fileLocation, fileTarget, targetImage)
   if (!name || !width || !height || isNaN(Number(width)) || isNaN(Number(height))) {
     return res.status(400).send('Error, missing or malformed parameters')
   }
 
   if (handlers.imaExtension(String(name))) {
-    return res.status(400).send("Filename shouldn't include the extension");
+    return res.status(400).send("Filename shouldn't include the extension")
   }
 
   if (!handlers.exsist(fileTarget)) {
@@ -30,41 +27,20 @@ imageResizer.get('/', async (req: express.Request, res: express.Response) => {
   }
 
   if (!handlers.exsist(fileLocation)) {
-    handlers.makeDir(fileLocation);
+    handlers.makeDir(fileLocation)
   }
 
-  const outputImage = fileTarget + `${name}-thumb-${width}x${height}.jpg`;
+  const outputImage = fileTarget + `${name}-thumb-${width}x${height}.jpg`
   if (handlers.exsist(outputImage)) {
     // Caching system
-    res.sendFile(outputImage);
+    res.sendFile(outputImage)
   } else {
-    await resize(targetImage, outputImage, Number(width), Number(height));
-    res.sendFile(outputImage);
+    await resize(targetImage, outputImage, Number(width), Number(height))
+    res.sendFile(outputImage)
   }
-
 })
 
 export default imageResizer
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import path from "path";
 // import { checkType, fileExists, createDir } from "../../utilities/fileHandler";

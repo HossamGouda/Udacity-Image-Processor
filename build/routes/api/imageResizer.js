@@ -72,10 +72,9 @@ imageResizer.get('/', function (req, res) { return __awaiter(void 0, void 0, voi
                 name = req.query;
                 width = req.query;
                 height = req.query;
-                fileLocation = path_1.default.resolve('./') + '/assets/';
+                fileLocation = path_1.default.resolve('./assets');
                 fileTarget = fileLocation + 'thumb/';
                 targetImage = "".concat(fileLocation).concat(name, ".jpg");
-                console.log(name, width, height, fileLocation, fileTarget, targetImage);
                 if (!name || !width || !height || isNaN(Number(width)) || isNaN(Number(height))) {
                     return [2 /*return*/, res.status(400).send('Error, missing or malformed parameters')];
                 }
