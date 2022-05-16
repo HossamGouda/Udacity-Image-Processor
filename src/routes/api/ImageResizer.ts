@@ -5,15 +5,43 @@ import * as handlers from '../../pathTarget'
 
 
 
-const routes = express.Router()
+const imageResizer = express.Router()
 
-routes.get('/', async (req: express.Request, res: express.Response) => {
+imageResizer.get('/', async (req: express.Request, res: express.Response) => {
   const name = req.query;
   const width = req.query;
   const height = req.query;
   const fileLocation = path.resolve('./') + '/assets/'
   const fileTarget = fileLocation + 'thumb/'
+  const targetImage = `${fileLocation}${name}.jpg`
+  if (!name || !width || !height || isNaN(Number(width)) || isNaN(Number(height))) {
+    return res.status(400).send('Error, missing or malformed parameters')
+  }
+
+  if (handlers.imaExtension(String(name))) {
+    return res.status(400).send("Filename shouldn't include the extension");
+  }
+
+  if (!handlers.exsist(fileTarget)) {
+    return res.status(404).send('Oh uh, image not found')
+  }
+
+  if (!handlers.exsist(fileLocation)) {
+    handlers.makeDir(fileLocation);
+  }
+
+  const outputImage = fileTarget + `${name}-thumb-${width}x${height}.jpg`; // ex: pic.jpg => pic-thumbnail-500x400.jpg
+  if (handlers.exsist(outputImage)) {
+    // Caching system
+    res.sendFile(outputImage);
+  } else {
+    await resizer(targetImage, outputImage, Number(width), Number(height));
+    res.sendFile(outputImage);
+  }
+
 })
+
+export default imageResizer
 
 
 

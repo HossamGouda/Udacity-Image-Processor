@@ -4,12 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
-var file_1 = __importDefault(require("./api/file"));
-var file2_1 = __importDefault(require("./api/file2"));
+var imageResizer_1 = __importDefault(require("./api/imageResizer"));
 var routes = express_1.default.Router();
 routes.get('/', function (req, res) {
     res.send('images Api');
 });
-routes.use('/file1', file_1.default);
-routes.use('/file2', file2_1.default);
+routes.use('/imageresizer', imageResizer_1.default);
 exports.default = routes;

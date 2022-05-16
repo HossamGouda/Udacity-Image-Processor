@@ -19,29 +19,17 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.exsist = exports.imaExtension = exports.makeDir = void 0;
 var fs = __importStar(require("fs"));
 var makeDir = function (target) {
     return fs.mkdirSync(target);
 };
+exports.makeDir = makeDir;
 var imaExtension = function (imageName) {
     return imageName.includes('.jpg' || '.jpeg' || '.png' || '.gif');
 };
+exports.imaExtension = imaExtension;
 var exsist = function (file) {
     return fs.existsSync(file);
 };
-module.exports = {
-    makeDir: makeDir,
-    imaExtension: imaExtension,
-    exsist: exsist,
-};
-// import { existsSync, mkdirSync } from "fs";
-// const checkType = (fileName: string): boolean => {
-//   return fileName.includes(".jpg" || ".jpeg" || ".png" || ".gif"); // check if the file doesn't include an extension
-// };
-// const fileExists = (imageLocation: string): boolean => {
-//   return existsSync(imageLocation); // return whether or not the file exists synchronously
-// };
-// const createDir = (dirLocation: string) : void => {
-//   return mkdirSync(dirLocation);
-// }
-// export { checkType, fileExists, createDir };
+exports.exsist = exsist;
