@@ -59,6 +59,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
+// eslint-disable-next-line prettier/prettier
 var sharp_1 = __importDefault(require("../../sharp"));
 var path_1 = __importDefault(require("path"));
 var handlers = __importStar(require("../../pathTarget"));
@@ -74,6 +75,7 @@ imageResizer.get('/', function (req, res) { return __awaiter(void 0, void 0, voi
                 fileLocation = path_1.default.resolve('./') + '/assets/';
                 fileTarget = fileLocation + 'thumb/';
                 targetImage = "".concat(fileLocation).concat(name, ".jpg");
+                console.log(name, width, height, fileLocation, fileTarget, targetImage);
                 if (!name || !width || !height || isNaN(Number(width)) || isNaN(Number(height))) {
                     return [2 /*return*/, res.status(400).send('Error, missing or malformed parameters')];
                 }

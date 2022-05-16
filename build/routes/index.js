@@ -5,9 +5,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var imageResizer_1 = __importDefault(require("./api/imageResizer"));
+var logger_1 = __importDefault(require("../middleware/logger"));
 var routes = express_1.default.Router();
+routes.use(logger_1.default);
 routes.get('/', function (req, res) {
-    res.send('images Api');
+    res.send('Welcome to Image API resizer');
 });
-routes.use('/imageresizer', imageResizer_1.default);
+routes.use('/resize', imageResizer_1.default);
 exports.default = routes;

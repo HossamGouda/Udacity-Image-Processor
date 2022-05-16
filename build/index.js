@@ -24,6 +24,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 /* eslint-disable no-console */
 var express_1 = __importDefault(require("express"));
+var morgan_1 = __importDefault(require("morgan"));
 var dotenv = __importStar(require("dotenv"));
 var index_1 = __importDefault(require("./routes/index"));
 dotenv.config();
@@ -31,11 +32,11 @@ var PORT = process.env.PORT || 5000;
 // create an instance server
 var app = (0, express_1.default)();
 // HTTP request logger middleware
-// app.use(morgan('short'))
+app.use((0, morgan_1.default)('short'));
 // add routing for / path
-// app.get('/', (req: Request, res: Response) => {
-//   res.send('Home')
-// })
+app.get('/', function (req, res) {
+    res.send('WElcome to Image resizer');
+});
 app.use('/api', index_1.default);
 // start express server
 app.listen(PORT, function () {

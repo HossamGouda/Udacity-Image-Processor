@@ -10,12 +10,12 @@ const PORT = process.env.PORT || 5000
 // create an instance server
 const app: Application = express()
 // HTTP request logger middleware
-// app.use(morgan('short'))
+app.use(morgan('short'))
 
 // add routing for / path
-// app.get('/', (req: Request, res: Response) => {
-//   res.send('Home')
-// })
+app.get('/', (req: Request, res: Response) => {
+  res.send('WElcome to Image resizer')
+})
 
 app.use('/api', routes)
 

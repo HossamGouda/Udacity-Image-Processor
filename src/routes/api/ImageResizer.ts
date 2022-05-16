@@ -1,6 +1,7 @@
 import express from "express";
-import resizer from "../../sharp"
-import path from "path";
+// eslint-disable-next-line prettier/prettier
+import resize from "../../sharp"
+import path from 'path'
 import * as handlers from '../../pathTarget'
 
 
@@ -14,6 +15,8 @@ imageResizer.get('/', async (req: express.Request, res: express.Response) => {
   const fileLocation = path.resolve('./') + '/assets/'
   const fileTarget = fileLocation + 'thumb/'
   const targetImage = `${fileLocation}${name}.jpg`
+
+  console.log(name, width, height, fileLocation, fileTarget, targetImage)
   if (!name || !width || !height || isNaN(Number(width)) || isNaN(Number(height))) {
     return res.status(400).send('Error, missing or malformed parameters')
   }
@@ -30,12 +33,12 @@ imageResizer.get('/', async (req: express.Request, res: express.Response) => {
     handlers.makeDir(fileLocation);
   }
 
-  const outputImage = fileTarget + `${name}-thumb-${width}x${height}.jpg`; // ex: pic.jpg => pic-thumbnail-500x400.jpg
+  const outputImage = fileTarget + `${name}-thumb-${width}x${height}.jpg`;
   if (handlers.exsist(outputImage)) {
     // Caching system
     res.sendFile(outputImage);
   } else {
-    await resizer(targetImage, outputImage, Number(width), Number(height));
+    await resize(targetImage, outputImage, Number(width), Number(height));
     res.sendFile(outputImage);
   }
 
