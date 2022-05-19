@@ -40,3 +40,14 @@
   - [**utilities**](src/utilities)
 
 <!-- Project tree ends here -->
+
+### Credits and helper recources
+
+- https://github.com/HossamAbubakr/Pixely-Image-Processing-API.git
+- https://github.com/mohammedelzanaty/image-processing-api.git
+- https://github.com/otacke/udacity-image-processing-api.git
+- https://stackoverflow.com/questions/7042340/error-cant-set-headers-after-they-are-sent-to-the-client -https://stackshare.io/stackups/jasmine-vs-supertest#:~:text=Jasmine%20and%20SuperTest%20can%20be,stars%20and%20568%20GitHub%20forks.
+- https://www.youtube.com/watch?v=5WFyhsnU4Ik&list=PLECZ6pz3j9Rb7T99A0d8ReO-GuM7HG5Ie&index=1&t=20s
+- https://www.youtube.com/channel/UCCDDZ73SMXb3xp-hjMHngXg
+- https://www.youtube.com/watch?v=oNlMrpnUSFE&list=PLECZ6pz3j9Rb7T99A0d8ReO-GuM7HG5Ie&index=3
+- https://www.youtube.com/playlist?list=PL55RiY5tL51q4D-B63KBnygU6opNPFk_q
