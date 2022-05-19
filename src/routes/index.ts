@@ -1,14 +1,13 @@
 import express from 'express'
-import imageResizer from './api/imageResizer'
 import logger from '../middleware/logger'
+import imageCrop from './api/crop'
 
 const routes = express.Router()
 routes.use(logger)
 
 routes.get('/', (req: express.Request, res: express.Response) => {
-  res.send('Welcome to Image API resizer')
+  res.send('Hello from API Image resizer')
 })
-
-routes.use('/resize', imageResizer)
+routes.use('/crop', imageCrop)
 
 export default routes

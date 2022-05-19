@@ -1,5 +1,8 @@
-/* eslint-disable */
-import { DisplayProcessor, SpecReporter, StacktraceOption } from 'jasmine-spec-reporter'
+import {
+  DisplayProcessor,
+  SpecReporter,
+  StacktraceOption,
+} from 'jasmine-spec-reporter'
 import SuiteInfo = jasmine.SuiteInfo
 
 class CustomProcessor extends DisplayProcessor {
@@ -11,12 +14,9 @@ class CustomProcessor extends DisplayProcessor {
 jasmine.getEnv().clearReporters()
 jasmine.getEnv().addReporter(
   new SpecReporter({
-    suite: {
-      displayNumber: true
-    },
     spec: {
-      displayStacktrace: StacktraceOption.NONE
+      displayStacktrace: StacktraceOption.NONE,
     },
-    customProcessors: [CustomProcessor]
+    customProcessors: [CustomProcessor],
   })
 )

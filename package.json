@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "npx tsc && jasmine",
-    "dev": "nodemon ./src/index.ts",
-    "clean": "rimraf build/",
+    "deve": "nodemon ./src/server.ts",
+    "rmv": "rimraf dist/",
     "build": "yarn clean && npx tsc",
     "start": "npm run build && nodemon build/index.js",
     "prettier": " prettier --write  ./src/**/*.{ts,tsx,js,jsx} ",
-    "lint": "eslint . --ext .ts"
+    "lint": "eslint . --ext .ts",
+    "jasmine": "jasmine"
   },
   "keywords": [],
   "author": "",
