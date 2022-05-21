@@ -1,6 +1,16 @@
 import resize from '../../utilities/resize'
 
-it('Test resize function ', async () => {
-  const result = await resize
-  expect(result).not.toBeUndefined()
+it('Test The resize function ', async () => {
+  const testFileSource = './assets/fjord.jpg'
+  const testResultPath = './assets/thumbs/fjord-thumbs-100-200.jpg'
+  const testWidth = 100
+  const testHeight = 200
+
+  const result = await resize(
+    testFileSource,
+    testResultPath,
+    testWidth,
+    testHeight
+  )
+  expect(result).not.toBeNull
 })
