@@ -5,7 +5,7 @@ import routes from './routes/index'
 
 dotenv.config()
 const app: Application = express()
-const port = process.env.PORT
+const port = process.env.PORT || 5555
 app.use('/api', routes)
 app.listen(port, () => {
   console.log(`Server is live on port ${port}`)
