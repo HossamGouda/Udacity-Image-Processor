@@ -1,16 +1,6 @@
-import myFunc from '../../utilities/myfunc'
+import resize from '../../utilities/resize'
 
-it('dos as', () => {
-  const result = a + b
-  expect(result).toEqual(5)
+it('Test resize function ', async () => {
+  const result = await resize
+  expect(result).not.toBeUndefined()
 })
-
-// it('does a thing', async function () {
-//   const result = await resize(
-//     testFilePath,
-//     testWidth,
-//     testHeight,
-//     testThumbPath
-//   )
-//   expect(result).not.toThrow()
-// })

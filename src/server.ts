@@ -12,7 +12,7 @@ app.listen(port, () => {
 })
 
 app.get('/', (req: Request, res: Response): void => {
-  res.send('Welcom to Main page for APII Image Processor')
+  res.send('Welcom to Main page for API Image Processor')
 })
 
 export const myFunc = (num: number): number => {
